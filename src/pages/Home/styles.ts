@@ -16,88 +16,7 @@ export const HomeContainer = styled.main`
   }
 `
 
-export const FormContainer = styled.div`
-  width: 100%;
-
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-
-  color: ${(props) => props.theme['gray-100']};
-
-  font-size: 1.125rem;
-  font-weight: bold;
-`
-
-const BaseInput = styled.input`
-  height: 2.5rem;
-  padding: 0 0.5rem;
-
-  background: transparent;
-  color: ${(props) => props.theme['gray-100']};
-
-  border: 0;
-  border-bottom: 2px solid ${(props) => props.theme['gray-500']};
-
-  font-weight: bold;
-  font-size: 1.125rem;
-
-  &:focus {
-    box-shadow: none;
-    border-color: ${(props) => props.theme['brand-500']};
-  }
-
-  &::placeholder {
-    color: ${(props) => props.theme['gray-500']};
-  }
-`
-
-export const TaskInput = styled(BaseInput)`
-  flex: 1;
-
-  &::-webkit-calendar-picker-indicator {
-    display: none !important;
-  }
-`
-
-export const MinutesAmountInput = styled(BaseInput)`
-  width: 4rem;
-`
-
-export const CountdownContainer = styled.div`
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-
-  font-family: 'Roboto Mono', monospace;
-  font-size: 10rem;
-  line-height: 8rem;
-
-  color: ${(props) => props.theme['gray-100']};
-
-  span {
-    padding: 2rem 1rem;
-    background: ${(props) => props.theme['gray-700']};
-    border-radius: 8px;
-  }
-`
-
-export const Separator = styled.div`
-  width: 8rem;
-  padding: 2rem 0;
-
-  display: flex;
-  justify-content: center;
-
-  overflow: hidden;
-
-  color: ${(props) => props.theme['brand-700']};
-`
-export const StartCountdownButton = styled.button`
+const BaseCountdownButton = styled.button`
   width: 100%;
   padding: 1rem;
 
@@ -110,7 +29,6 @@ export const StartCountdownButton = styled.button`
   border-radius: 8px;
 
   color: ${(props) => props.theme['gray-100']};
-  background: ${(props) => props.theme['brand-700']};
   font-weight: bold;
 
   cursor: pointer;
@@ -124,5 +42,21 @@ export const StartCountdownButton = styled.button`
 
   &:not(:disabled):hover {
     background: ${(props) => props.theme['brand-500']};
+  }
+`
+
+export const StartCountdownButton = styled(BaseCountdownButton)`
+  background: ${(props) => props.theme['brand-700']};
+
+  &:not(:disabled):hover {
+    background: ${(props) => props.theme['brand-500']};
+  }
+`
+
+export const StopCountdownButton = styled(BaseCountdownButton)`
+  background: ${(props) => props.theme['red-500']};
+
+  &:not(:disabled):hover {
+    background: ${(props) => props.theme['brand-700']};
   }
 `
