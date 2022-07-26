@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { Router } from './Router'
@@ -13,6 +14,18 @@ export function App() {
       </BrowserRouter>
 
       <GlobalStyles />
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        gutter={8}
+        toastOptions={{
+          duration: 5000,
+          style: {
+            background: '#E38A8A',
+            color: '#fff',
+          },
+        }}
+      />
     </ThemeProvider>
   )
 }
