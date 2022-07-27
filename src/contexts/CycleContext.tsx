@@ -5,13 +5,12 @@ import {
   useReducer,
   useState,
 } from 'react'
-import { Cycle, cycleReducer } from '../reducers/cycle/reducer'
 import {
-  ActionTypes,
   addNewCycleAction,
   interruptCurrentCycleAction,
   markCurrentCycleAsFinishedAction,
 } from '../reducers/cycle/actions'
+import { Cycle, cycleReducer } from '../reducers/cycle/reducer'
 import { differenceInSeconds } from 'date-fns'
 
 interface CreateCycleData {
@@ -30,11 +29,11 @@ interface CycleContextType {
   setSecondsPassed: (seconds: number) => void
 }
 
+export const CycleContext = createContext({} as CycleContextType)
+
 interface CycleContextProviderProps {
   children: ReactNode
 }
-
-export const CycleContext = createContext({} as CycleContextType)
 
 export function CycleContextProvider({ children }: CycleContextProviderProps) {
   const [cyclesState, dispatch] = useReducer(
@@ -53,7 +52,6 @@ export function CycleContextProvider({ children }: CycleContextProviderProps) {
   )
 
   const { cycles, activeCycleId } = cyclesState
-
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
 
   const [amountSecondsPassed, setAmountSecondsPassed] = useState(() => {
@@ -71,7 +69,7 @@ export function CycleContextProvider({ children }: CycleContextProviderProps) {
   }, [cyclesState])
 
   function createNewCycle(data: CreateCycleData) {
-    const id = String(Math.random())
+    const id = String(new Date().getTime())
 
     const newCycle = {
       id,
