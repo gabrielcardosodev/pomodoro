@@ -1,6 +1,7 @@
 import { Toaster } from 'react-hot-toast'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
+import { CycleContextProvider } from './contexts/CycleContext'
 import { Router } from './Router'
 
 import { GlobalStyles } from './styles/global'
@@ -10,7 +11,9 @@ export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-        <Router />
+        <CycleContextProvider>
+          <Router />
+        </CycleContextProvider>
       </BrowserRouter>
 
       <GlobalStyles />
