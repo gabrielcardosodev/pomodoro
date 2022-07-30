@@ -9,15 +9,20 @@ export const HomeContainer = styled.main`
   justify-content: center;
 
   form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3.5rem;
+    gap: 3rem;
+
+    @media (max-width: 768px) {
+      gap: 2.5rem;
+    }
   }
 `
 
 const BaseCountdownButton = styled.button`
-  width: 100%;
+  width: 75%;
   padding: 1rem;
 
   display: flex;
@@ -42,6 +47,10 @@ const BaseCountdownButton = styled.button`
 
   &:not(:disabled):hover {
     background: ${(props) => props.theme['brand-500']};
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `
 
